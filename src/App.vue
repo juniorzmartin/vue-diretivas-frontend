@@ -1,5 +1,7 @@
 <template>
-  <p v-teste>Primeira diretiva customizada</p>
+  <p>Sem diretiva</p>
+  <p v-texto>Primeira diretiva customizada</p>
+  <p v-texto>testando</p>
 </template>
 
 <script>
