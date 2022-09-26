@@ -29,13 +29,37 @@ Vue.directive('texto', {
 
 Vue.directive('posicao', {
     created(el, binding){
-        console.log(binding.arg, binding.value)
-
         const posicoesPossiveis = ['relative', 'fixed', 'absolute']
 
         if(posicoesPossiveis.includes(binding.arg)) {
             el.style.position = binding.arg
             el.style.top = `${binding.value}px`
+        }
+    }
+})
+
+Vue.directive('informacao',{
+    created(el, binding){
+        console.log(el,binding.arg, binding.modifiers, binding.value)
+        let funcao = function () {
+            let informacaoSpan = document.createElement('span')
+            informacaoSpan.style.position = 'absolute'
+            informacaoSpan.style.background = '#ddd'
+            informacaoSpan.style.padding = '2px'
+            informacaoSpan.innerText = binding.value
+
+            el.appendChild(informacaoSpan)
+
+            informacaoSpan.addEventListener('click', (event) => {
+                event.stopPropagation()
+                informacaoSpan.remove()
+            })
+        }
+        if(binding.modifiers['umClickMouse']){
+            el.addEventListener('click', funcao)
+        }
+        if(binding.modifiers['doisClicksMouse']){
+            el.addEventListener('dblclick', funcao)
         }
     }
 })
