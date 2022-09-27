@@ -14,15 +14,11 @@
 </template>
 
 <script>
-
+import colorirFundoTexto from '@/directives/colorirFundoTexto'
 export default {
   name: 'App',
-  directives: {
-    colorir: {
-      created: function(el, binding){
-        el.style.background = binding.value
-      }
-    }
+  directives:{
+    colorir: colorirFundoTexto
   },
   data: () => ({  
       configuracaoTexto : {cor: 'green', tamanhoFonte:'400%', totalCaracteres:4}
