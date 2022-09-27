@@ -9,12 +9,21 @@
   <br>
   <br>
   <span>Código B: </span><input type="text"><span v-informacao:destacado.oneClicksMouse.sairAutomaticamente="'Você encontrará o código B na parte traseira do equipamento'">--i</span>
+  <hr>
+  <h1 v-colorir="'red'">Diretiva customizada registrada localmente(no componente)</h1>
 </template>
 
 <script>
 
 export default {
   name: 'App',
+  directives: {
+    colorir: {
+      created: function(el, binding){
+        el.style.background = binding.value
+      }
+    }
+  },
   data: () => ({  
       configuracaoTexto : {cor: 'green', tamanhoFonte:'400%', totalCaracteres:4}
   })

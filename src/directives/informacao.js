@@ -1,6 +1,5 @@
 export default {
     created(el, binding){
-        console.log(el,binding.arg, binding.modifiers, binding.value)
         let funcao = null
         if(binding.arg == undefined || binding.arg === 'simples'){
          funcao = function () {
